@@ -15,3 +15,5 @@ A custom select component using Web Components. Mostly because I want to style t
 ```
 npm run dev
 ```
+
+Visit http://localhost:9001/test/index.html
