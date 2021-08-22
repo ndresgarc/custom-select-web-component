@@ -1,7 +1,7 @@
 {
   "name": "wc-custom-select",
   "version": "1.0.0",
-  "description": "A custom select component using Web Components. Mostly because I want to style the options inside it.",
+  "description": "A custom select component using Web Components.",
   "main": "index.js",
   "scripts": {
     "dev": "lite-server --config=dev-config.json"
