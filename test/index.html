@@ -8,5 +8,20 @@
 </head>
 <body>
     <h1>Custom Select</h1>
+    <custom-select>
+        <div value="1">One</div>
+        <div value="2">Two</div>
+        <div value="3">Three</div>
+        <div value="4">Four</div>
+    </custom-select>
+    <script src="../src/custom-select.js"></script>
+    <script>
+        document.querySelector('custom-select').addEventListener('change', function(event){
+            let value = event.detail.value;
+            console.table({ value });
+        });
+    </script>
 </body>
 </html>
+
+

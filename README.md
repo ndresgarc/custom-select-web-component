@@ -4,9 +4,14 @@ A custom select component using Web Components. Mostly because I want to style t
 ## Usage 
 ```
 <custom-select>
-    <span value="1">One</span>
-    <span value="2">Two</span>
-    <span value="3">Three</span>
-    <span value="4">Four</span>
+    <div value="1">One</div>
+    <div value="2">Two</div>
+    <div value="3">Three</div>
+    <div value="4">Four</div>
 <custom-select>
+```
+
+## Test
+```
+npm run dev
 ```
