@@ -1,4 +1,4 @@
-(function () {
+const createCustomSelect = function () {
 
     const template = document.createElement('template');
 
@@ -113,4 +113,18 @@
 
     window.customElements.define('custom-select', CustomSelect);
 
-})();
+};
+
+createCustomSelect();
+
+export default {
+    title: 'CUSTOM SELECT/Default'
+};
+
+export const customSelect = () => `
+    <custom-select>
+        <div value="1">One</div>
+        <div value="2">Two</div>
+        <div value="3">Three</div>
+        <div value="4">Four</div>
+    </custom-select>`;
