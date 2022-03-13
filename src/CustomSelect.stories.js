@@ -8,8 +8,8 @@ export default {
 
 export const customSelect = () => `
     <custom-select>
-        <div value="1">One</div>
-        <div value="2">Two</div>
-        <div value="3">Three</div>
-        <div value="4">Four</div>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
     </custom-select>`;
