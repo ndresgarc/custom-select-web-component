@@ -49,14 +49,7 @@ export const defineCustomSelect = function () {
         connectedCallback() {
 
             let customSelect = this;
-            this.shadowRoot.querySelector('#cs-button').addEventListener('click', function(event) {
-                customSelect.open = !customSelect.open;
-                if (customSelect.open) {
-                    customSelect.shadowRoot.querySelector('#cs-options').style.display = 'block';
-                } else {
-                    customSelect.shadowRoot.querySelector('#cs-options').style.display = 'none';
-                }
-            });
+            this.shadowRoot.querySelector('#cs-button').addEventListener('click', this._buttonClickHandler);
 
             this.shadowRoot.querySelector('#cs-slot').addEventListener('click', function(event) {
 
@@ -114,6 +107,17 @@ export const defineCustomSelect = function () {
                 this.setAttribute('value', val);
             } else {
                 this.removeAttribute('value');
+            }
+        }
+
+        // Internal methods
+
+        _buttonClickHandler(event) {
+            this.open = !this.open;
+            if (this.open) {
+                this.shadowRoot.querySelector('#cs-options').style.display = 'block';
+            } else {
+                this.shadowRoot.querySelector('#cs-options').style.display = 'none';
             }
         }
 
