@@ -39,14 +39,19 @@ export const defineCustomSelect = function () {
 
         constructor() {
             super();
-            let shadowRoot = this.attachShadow({ mode: 'open' });
-            shadowRoot.appendChild(template.content.cloneNode(true));
-            // const node = document.importNode(template.content, true);
-            // this.appendChild(node);
+            this.attachShadow({ mode: 'open' });
+            this._buttonClickHandler = this._buttonClickHandler.bind(this);
+            
         }
 
         // Element is added to the DOM
         connectedCallback() {
+
+            const { shadowRoot } = this;
+
+            shadowRoot.appendChild(template.content.cloneNode(true));
+            // const node = document.importNode(template.content, true);
+            // this.appendChild(node);
 
             let customSelect = this;
             this.shadowRoot.querySelector('#cs-button').addEventListener('click', this._buttonClickHandler);
@@ -113,6 +118,7 @@ export const defineCustomSelect = function () {
         // Internal methods
 
         _buttonClickHandler(event) {
+            const { customSelect } = this;
             this.open = !this.open;
             if (this.open) {
                 this.shadowRoot.querySelector('#cs-options').style.display = 'block';
