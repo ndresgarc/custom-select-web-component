@@ -2,22 +2,25 @@ export const defineCustomSelect = function () {
 
     const template = document.createElement('template');
 
+    // IDs are used for JS
+    // Classes are used for CSS
+
     template.innerHTML = `
 
-        <div id="custom-select-wrapper">
+        <div id="cs-wrapper" class="cs-wrapper">
             <div>
-                <button id="custom-select-button">Select</button>
+                <button id="cs-button" class="cs-button">Select...</button>
             </div>
-            <div id="custom-select-box">
-                <slot id="custom-select-slot"></slot>
+            <div id="cs-options" class="cs-options">
+                <slot id="cs-slot"></slot>
             </div>
         </div>
 
         <style>
-            #custom-select-wrapper {
+            .cs-wrapper {
                 position: relative;
             }
-            #custom-select-box {
+            .cs-options {
                 display: none;
                 position: absolute;
                 top: 100%;
@@ -29,34 +32,38 @@ export const defineCustomSelect = function () {
                 display: block;
             }
         </style>
+
     `;
 
     class CustomSelect extends HTMLElement {
 
         constructor() {
             super();
-            let shadowRoot = this.attachShadow({mode: 'open'});
+            let shadowRoot = this.attachShadow({ mode: 'open' });
             shadowRoot.appendChild(template.content.cloneNode(true));
+            // const node = document.importNode(template.content, true);
+            // this.appendChild(node);
         }
 
+        // Element is added to the DOM
         connectedCallback() {
 
             let customSelect = this;
-            this.shadowRoot.querySelector('#custom-select-button').addEventListener('click', function(event) {
+            this.shadowRoot.querySelector('#cs-button').addEventListener('click', function(event) {
                 customSelect.open = !customSelect.open;
                 if (customSelect.open) {
-                    customSelect.shadowRoot.querySelector('#custom-select-box').style.display = 'block';
+                    customSelect.shadowRoot.querySelector('#cs-options').style.display = 'block';
                 } else {
-                    customSelect.shadowRoot.querySelector('#custom-select-box').style.display = 'none';
+                    customSelect.shadowRoot.querySelector('#cs-options').style.display = 'none';
                 }
             });
 
-            this.shadowRoot.querySelector('#custom-select-slot').addEventListener('click', function(event) {
+            this.shadowRoot.querySelector('#cs-slot').addEventListener('click', function(event) {
 
                 customSelect.value = event.target.getAttribute('custom-select-value');
                 customSelect.open = false;
-                customSelect.shadowRoot.querySelector('#custom-select-box').style.display = 'none';
-                customSelect.shadowRoot.querySelector('#custom-select-button').innerHTML = event.target.innerHTML;
+                customSelect.shadowRoot.querySelector('#cs-options').style.display = 'none';
+                customSelect.shadowRoot.querySelector('#cs-button').innerHTML = event.target.innerHTML;
             
                 const onChangeEvent = new CustomEvent('change', {
                     bubbles: true,
@@ -77,7 +84,8 @@ export const defineCustomSelect = function () {
             
         }
 
-        attributeChangedCallback(attrName, oldVal, newVal) {
+        // Called whenever one of the element's observedAttributes are updated
+        attributeChangedCallback(attributeName, oldValue, newValue) {
 
         }
 
