@@ -7,19 +7,19 @@ export const defineCustomSelect = function () {
 
     template.innerHTML = `
 
-        <div id="cs-wrapper" class="cs-wrapper">
-            <div>
-                <button id="cs-button" class="cs-button">Select...</button>
-            </div>
-            <div id="cs-options" class="cs-options">
-                <slot id="cs-slot"></slot>
-            </div>
-        </div>
-
         <style>
+
+            :host([open]) {
+                display: block;
+            }
             .cs-wrapper {
                 position: relative;
             }
+
+            .cs-button {
+
+            }
+
             .cs-options {
                 display: none;
                 position: absolute;
@@ -28,10 +28,19 @@ export const defineCustomSelect = function () {
                 width: auto;
                 height: auto;
             }
-            :host([open]) {
-                display: block;
-            }
+
+        
         </style>
+
+        <div id="cs-wrapper" class="cs-wrapper">
+
+            <button id="cs-button" class="cs-button">Select...</button>
+
+            <div id="cs-options" class="cs-options">
+                <slot id="cs-slot"></slot>
+            </div>
+
+        </div>
 
     `;
 
