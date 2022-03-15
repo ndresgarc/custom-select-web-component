@@ -24,6 +24,11 @@ export const defineCustomSelect = function () {
                 padding: var(--cs-button--padding, black);
             }
 
+            .cs-button::after {
+                display: inline-block;
+                content: "▼";                
+            }
+
             .cs-options {
                 display: none;
                 position: absolute;
