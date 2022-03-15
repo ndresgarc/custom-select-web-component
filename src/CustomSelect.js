@@ -17,7 +17,11 @@ export const defineCustomSelect = function () {
             }
 
             .cs-button {
-
+                background: var(--cs-button--background, transparent);
+                border: var(--cs-button--background, 1px solid #ccc);
+                border-radius: var(--cs-button--border-radius, none);
+                color: var(--cs-button--color, black);
+                padding: var(--cs-button--padding, black);
             }
 
             .cs-options {
