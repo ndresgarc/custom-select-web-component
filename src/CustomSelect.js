@@ -30,6 +30,7 @@ export const defineCustomSelect = function () {
             }
 
             .cs-options {
+                border: var(--cs-options--border, 1px solid #ccc);
                 display: none;
                 position: absolute;
                 top: 100%;
