@@ -44,7 +44,9 @@ export const defineCustomSelect = function () {
 
         <div id="cs-wrapper" class="cs-wrapper">
 
-            <button id="cs-button" class="cs-button">Select...</button>
+            <button id="cs-button" class="cs-button">
+                Select...
+            </button>
 
             <div id="cs-options" class="cs-options">
                 <slot id="cs-slot"></slot>
@@ -73,9 +75,21 @@ export const defineCustomSelect = function () {
             // this.appendChild(node);
 
             let customSelect = this;
-            this.shadowRoot.querySelector('#cs-button').addEventListener('click', this._buttonClickHandler);
+            this.shadowRoot.querySelector('#cs-button').addEventListener('click', (event) => {
+
+                customSelect.open = !customSelect.open;
+                if (customSelect.open) {
+                    customSelect.shadowRoot.querySelector('#cs-options').style.display = 'block';
+                } else {
+                    customSelect.shadowRoot.querySelector('#cs-options').style.display = 'none';
+                }
+
+            });
 
             this.shadowRoot.querySelector('#cs-slot').addEventListener('click', function(event) {
+
+                event.preventDefault();
+                event.stopPropagation();
 
                 customSelect.value = event.target.getAttribute('custom-select-value');
                 customSelect.open = false;
@@ -137,7 +151,9 @@ export const defineCustomSelect = function () {
         // Internal methods
 
         _buttonClickHandler(event) {
-            const { customSelect } = this;
+           
+            const { shadowRoot } = this;
+
             this.open = !this.open;
             if (this.open) {
                 this.shadowRoot.querySelector('#cs-options').style.display = 'block';
