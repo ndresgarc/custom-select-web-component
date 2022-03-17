@@ -1,3 +1,7 @@
+import { defineCustomSelect } from "../src/defineCustomSelect";
+
+defineCustomSelect();
+
 export const createCustomSelect = function (props) {
     return `
 

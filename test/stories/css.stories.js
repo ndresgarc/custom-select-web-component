@@ -1,4 +1,3 @@
-import { defineCustomSelect } from '../../src/defineCustomSelect';
 import { createCustomSelect } from '../createCustomSelect';
 
 export default {
