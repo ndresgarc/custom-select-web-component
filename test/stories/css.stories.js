@@ -1,5 +1,5 @@
 import { defineCustomSelect } from '../../src/defineCustomSelect';
-import { createCustomSelect } from '../../src/createCustomSelect';
+import { createCustomSelect } from '../createCustomSelect';
 
 export default {
     title: 'Custom Select / CSS',
