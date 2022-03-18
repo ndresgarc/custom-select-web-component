@@ -36,3 +36,8 @@ CSS custom properties can be configured in the host to stylize the component.
 ### Options (cs-options)
 
     border: var(--cs-options--border, 1px solid #ccc);
+
+
+## TO-DO
+
++ `disabled` attribute should deactivate click
