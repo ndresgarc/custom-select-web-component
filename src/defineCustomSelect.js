@@ -98,33 +98,30 @@ export const defineCustomSelect = function () {
                 event.preventDefault();
                 event.stopPropagation();
 
+
                 customSelect.value = event.target.getAttribute('custom-select-value');
                 customSelect.open = false;
-                customSelect.shadowRoot.querySelector('#cs-options').style.display = 'none';
                 customSelect.shadowRoot.querySelector('#cs-button').innerHTML = event.target.innerHTML;
             
-                const onChangeEvent = new CustomEvent('change', {
-                    bubbles: true,
-                    cancelable: true,
-                    composed: true,
-                    detail: {
-                        value: event.target.getAttribute('value')
-                    }
-                });
-
-                customSelect.dispatchEvent(onChangeEvent);
+                customSelect.dispatchEvent(new Event('change'));
 
             });
             
         }
 
         disconnectedCallback() {
+            // Remove listeners
             
         }
 
         // Called whenever one of the element's observedAttributes are updated
-        attributeChangedCallback(attributeName, oldValue, newValue) {
-
+        attributeChangedCallback(attributeName, oldValue, newValue) {            
+            if (newValue !== oldValue) {
+                if (attributeName === 'open') {
+                    // Boolean value
+                    this[attributeName] = this.hasAttribute(attributeName);
+                }
+            }
         }
 
         static get observedAttributes() {
@@ -134,11 +131,11 @@ export const defineCustomSelect = function () {
         get open() {
             return this.hasAttribute('open');
         }
-
-        set open(val) {
-            if (val) {
-                this.setAttribute('open', '');
-                 } else {
+          
+        set open(isOpen) {
+            if (isOpen) {
+                this.setAttribute('open', true);
+            } else {
                 this.removeAttribute('open');
             }
         }
@@ -148,6 +145,9 @@ export const defineCustomSelect = function () {
         }
 
         set value(val) {
+            // Search if value exist in the select
+            // If yes, set it up
+            // If no, throw error
             if (val) {
                 this.setAttribute('value', val);
             } else {
