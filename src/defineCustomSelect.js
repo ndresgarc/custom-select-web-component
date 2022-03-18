@@ -9,6 +9,10 @@ export const defineCustomSelect = function () {
 
         <style>
 
+            :host([disabled]) {
+                opacity: 0.5;
+            }
+
             :host([open]) .cs-options {
                 display: block;
             }
@@ -155,6 +159,10 @@ export const defineCustomSelect = function () {
 
         _buttonClickHandler(event) {
            
+            /*
+
+            COMMENTED OUT AS THIS IMPLEMENTATION WAS CAUSING PROBLEMS WITH THE NESTED HTML OPTION
+
             const { shadowRoot } = this;
 
             this.open = !this.open;
@@ -163,6 +171,8 @@ export const defineCustomSelect = function () {
             } else {
                 this.shadowRoot.querySelector('#cs-options').style.display = 'none';
             }
+             
+            */
         }
 
     }
