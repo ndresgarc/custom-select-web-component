@@ -9,9 +9,13 @@ export const defineCustomSelect = function () {
 
         <style>
 
-            :host([open]) {
+            :host([open]) .cs-options {
                 display: block;
             }
+            :host(:not([open])) .cs-options {
+                display: none;
+            }
+
             .cs-wrapper {
                 position: relative;
             }
@@ -31,7 +35,6 @@ export const defineCustomSelect = function () {
 
             .cs-options {
                 border: var(--cs-options--border, 1px solid #ccc);
-                display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -79,9 +82,9 @@ export const defineCustomSelect = function () {
 
                 customSelect.open = !customSelect.open;
                 if (customSelect.open) {
-                    customSelect.shadowRoot.querySelector('#cs-options').style.display = 'block';
+                    // customSelect.shadowRoot.querySelector('#cs-options').style.display = 'block';
                 } else {
-                    customSelect.shadowRoot.querySelector('#cs-options').style.display = 'none';
+                    // customSelect.shadowRoot.querySelector('#cs-options').style.display = 'none';
                 }
 
             });
