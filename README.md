@@ -41,3 +41,4 @@ CSS custom properties can be configured in the host to stylize the component.
 ## TO-DO
 
 + `disabled` attribute should deactivate click
++ Fire event when a news value is selected
