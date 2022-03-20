@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <custom-select>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+        </custom-select>
+        <script type="module" src="loader.js"></script>
+        <script>
+            document.querySelector('custom-select').addEventListener('change', function(event){
+                console.log('event-received');
+            });
+        </script>
+    </body>
+</html>
