@@ -21,6 +21,7 @@ export const defineCustomSelect = function () {
             }
 
             .cs-wrapper {
+                display: inline-block;
                 position: relative;
             }
 
@@ -42,6 +43,7 @@ export const defineCustomSelect = function () {
                 position: absolute;
                 top: 100%;
                 left: 0;
+                right: 0;
                 width: auto;
                 height: auto;
             }
