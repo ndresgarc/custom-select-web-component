@@ -86,6 +86,8 @@ export const defineCustomSelect = function () {
             let customSelect = this;
             this.shadowRoot.querySelector('#cs-button').addEventListener('click', (event) => {
 
+                if (this.disabled) return false;
+
                 customSelect.open = !customSelect.open;
                 if (customSelect.open) {
                     // customSelect.shadowRoot.querySelector('#cs-options').style.display = 'block';
@@ -119,7 +121,10 @@ export const defineCustomSelect = function () {
         // Called whenever one of the element's observedAttributes are updated
         attributeChangedCallback(attributeName, oldValue, newValue) {            
             if (newValue !== oldValue) {
-                if (attributeName === 'open') {
+                if (
+                    attributeName === 'open' ||
+                    attributeName === 'disabled'
+                ) {
                     // Boolean value
                     this[attributeName] = this.hasAttribute(attributeName);
                 }
@@ -127,7 +132,15 @@ export const defineCustomSelect = function () {
         }
 
         static get observedAttributes() {
-            return ['open'];
+            return ['disabled', 'open'];
+        }
+
+        get disabled() {
+            return this.hasAttribute('disabled');
+        }
+
+        set disabled(isDisabled) {
+            isDisabled ? this.setAttribute('disabled', true) : this.removeAttribute('disabled');
         }
 
         get open() {
