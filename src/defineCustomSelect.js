@@ -17,7 +17,8 @@ export const defineCustomSelect = function () {
                 display: block;
             }
 
-            :host(:not([open])) .cs-options {
+            :host(:not([open])) .cs-options,
+            :host([disabled]) .cs-options {
                 display: none;
             }
 
