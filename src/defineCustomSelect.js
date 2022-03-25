@@ -16,6 +16,7 @@ export const defineCustomSelect = function () {
             :host([open]) .cs-options {
                 display: block;
             }
+
             :host(:not([open])) .cs-options {
                 display: none;
             }
@@ -80,8 +81,6 @@ export const defineCustomSelect = function () {
             const { shadowRoot } = this;
 
             shadowRoot.appendChild(template.content.cloneNode(true));
-            // const node = document.importNode(template.content, true);
-            // this.appendChild(node);
 
             let customSelect = this;
             this.shadowRoot.querySelector('#cs-button').addEventListener('click', (event) => {
@@ -89,11 +88,6 @@ export const defineCustomSelect = function () {
                 if (this.disabled) return false;
 
                 customSelect.open = !customSelect.open;
-                if (customSelect.open) {
-                    // customSelect.shadowRoot.querySelector('#cs-options').style.display = 'block';
-                } else {
-                    // customSelect.shadowRoot.querySelector('#cs-options').style.display = 'none';
-                }
 
             });
 
@@ -115,19 +109,23 @@ export const defineCustomSelect = function () {
 
         disconnectedCallback() {
             // Remove listeners
-            
+
         }
 
+        // attributeChangedCallback
         // Called whenever one of the element's observedAttributes are updated
+
+        _isBooleanAttribute(attributeName) {
+            if (
+                attributeName === 'open' ||
+                attributeName === 'disabled'
+            ) return true;
+            return false;
+        }
+
         attributeChangedCallback(attributeName, oldValue, newValue) {            
             if (newValue !== oldValue) {
-                if (
-                    attributeName === 'open' ||
-                    attributeName === 'disabled'
-                ) {
-                    // Boolean value
-                    this[attributeName] = this.hasAttribute(attributeName);
-                }
+                this[attributeName] = this._isBooleanAttribute(attributeName) ? this.hasAttribute(attributeName) : this.getAttribute(attributeName);                
             }
         }
 
