@@ -1,7 +1,5 @@
 import { createCustomSelect } from '../createCustomSelect';
 
-import { action } from '@storybook/addon-actions'; 
-
 export default {
     title: 'Custom Select / Events',
     argTypes: {
@@ -10,8 +8,7 @@ export default {
     parameters: {
         actions: {
             handles: [
-                'click custom-select',
-                'change'
+                'click'
             ]
         }
     }
@@ -23,6 +20,5 @@ const Template = ({ label, ...args }) => {
 
 export const Change = Template.bind({});
 Change.args = {
-    label: 'Blue',
-    html_onclick: action('bla')
+    label: 'Blue'
 };

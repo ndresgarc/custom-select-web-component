@@ -1,5 +1,17 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <style>
+            .success {
+                background-color: green;
+                color: white;
+            }
+            .error {
+                background-color: red;
+                color: white;
+            }
+        </style>
+    </head>
     <body>
         <custom-select>
             <option value="1">One</option>
@@ -7,11 +19,34 @@
             <option value="3">Three</option>
             <option value="4">Four</option>
         </custom-select>
+        <hr>
+        <div id="log-container"></div>
         <script type="module" src="loader.js"></script>
         <script>
+
+            // LOG HANDLER
+
+            const log = ({ success, message }) => {
+
+                const logContainer = document.querySelector('#log-container');
+
+                logContainer.innerHTML += `<p class="${success ? 'success' : 'error' }">${message}</p>`;
+
+            };
+
+            // LISTENERS
+
             document.querySelector('custom-select').addEventListener('change', function(event){
-                console.log('event-received');
+                log({
+                    success: true,
+                    message: 'event-received'
+                });
             });
+
+            // TRIGGERS
+
+            
+
         </script>
     </body>
 </html>
