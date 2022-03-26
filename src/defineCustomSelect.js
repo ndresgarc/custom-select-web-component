@@ -37,7 +37,8 @@ export const defineCustomSelect = function () {
 
             .cs-button::after {
                 display: inline-block;
-                content: "▼";                
+                content: var(--cs-button--after--font-family, "▼");;
+                font-family: var(--cs-button--after--font-family);
             }
 
             .cs-options {
