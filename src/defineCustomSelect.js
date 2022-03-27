@@ -132,9 +132,15 @@ export const defineCustomSelect = function () {
         }
 
         static get observedAttributes() {
-            return ['disabled', 'open'];
+            return [
+                'disabled',
+                'multiple',
+                'open',
+                'size'
+            ];
         }
 
+        // ATTRIBUTE : DISABLED
         get disabled() {
             return this.hasAttribute('disabled');
         }
@@ -143,6 +149,7 @@ export const defineCustomSelect = function () {
             isDisabled ? this.setAttribute('disabled', true) : this.removeAttribute('disabled');
         }
 
+        // ATTRIBUTE : OPEN
         get open() {
             return this.hasAttribute('open');
         }
@@ -155,12 +162,19 @@ export const defineCustomSelect = function () {
             }
         }
 
+        // ATTRIBUTE : MULTIPLE
+
+        // ATTRIBUTE : SIZE
+
+        // PROPERTY : VALUE
+        // ---------------------------------------------------------------------
+
         get value() {
             return this.getAttribute('value');
         }
 
         set value(val) {
-            // Search if value exist in the select
+            // TODO: Search if value exist in the select
             // If yes, set it up
             // If no, throw error
             if (val) {
