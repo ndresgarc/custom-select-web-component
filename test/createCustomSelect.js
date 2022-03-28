@@ -11,8 +11,11 @@ export const createCustomSelect = function (props) {
             :root {
                 --cs-button--background: ${props.css_button_background};
                 --cs-button--border: ${props.css_button_border};
+                --cs-button--border-radius: ${props.css_button_border_radius};
                 --cs-button--color: ${props.css_button_color};
                 --cs-button--padding: ${props.css_button_padding};
+                --cs-button--after--content: ${props.css_button_after_content};
+                --cs-button--after--font-family: ${props.css_button_after_font_family};
             }
 
         </style>
