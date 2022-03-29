@@ -5,20 +5,32 @@ export default {
     argTypes: {
         css_button_background: {
             control: 'text',
-            name: 'background'
+            name: '--cs-button--background'
         },
         css_button_color: {
             control: 'text',
-            name: 'color'
+            name: '--cs-button--color'
         },
         css_button_border: {
             control: 'text',
-            name: 'border'
+            name: '--cs-button--border'
+        },
+        css_button_border_radius: {
+            control: 'text',
+            name: '--cs-button--border-radius'
         },
         css_button_padding: {
             control: 'text',
-            name: 'padding'
+            name: '--cs-button--padding'
         },
+        css_button_after_content: {
+            control: 'text',
+            name: '--cs-button--after--content'
+        },
+        css_button_after_font_family: {
+            control: 'text',
+            name: '--cs-button--after--font-family'
+        }
     }
 };
 
