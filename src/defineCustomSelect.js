@@ -43,12 +43,12 @@ export const defineCustomSelect = function () {
 
             .cs-options {
                 border: var(--cs-options--border, 1px solid #ccc);
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                width: auto;
-                height: auto;
+                position: var(--cs-options--position, absolute);
+                top: var(--cs-options--top, 100%);
+                left: var(--cs-options--left, 0);
+                right: var(--cs-options--right, 0);
+                width: var(--cs-options--width, auto);
+                height: var(--cs-options--width, auto);
             }
 
         
